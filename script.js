@@ -31,13 +31,16 @@ document.querySelectorAll("[data-scroll-target]").forEach((btn) => {
   });
 });
 
-// Reveal on scroll
+// Reveal on scroll + active nav link
 const revealElements = document.querySelectorAll(
   ".section-heading, .card, .menu-card, .location-card, .gallery-card, .split-text, .split-highlight, .reserve-copy, .reserve-form"
 );
+const sections = document.querySelectorAll("main section[id]");
+const navLinks = document.querySelectorAll(".nav-list a[href^='#']");
 
 if ("IntersectionObserver" in window) {
-  const observer = new IntersectionObserver(
+  // Content reveal
+  const revealObserver = new IntersectionObserver(
     (entries, obs) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -53,8 +56,34 @@ if ("IntersectionObserver" in window) {
 
   revealElements.forEach((el) => {
     el.setAttribute("data-reveal", "");
-    observer.observe(el);
+    revealObserver.observe(el);
   });
+
+  // Nav active state by section in view
+  if (sections.length && navLinks.length) {
+    const sectionObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const id = entry.target.getAttribute("id");
+          if (!id) return;
+
+          navLinks.forEach((link) => {
+            if (link.getAttribute("href") === `#${id}`) {
+              link.classList.add("nav-link-active");
+            } else {
+              link.classList.remove("nav-link-active");
+            }
+          });
+        });
+      },
+      {
+        threshold: 0.5,
+      }
+    );
+
+    sections.forEach((section) => sectionObserver.observe(section));
+  }
 }
 
 // Simple fake submission handler for the reservation form
