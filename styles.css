@@ -48,8 +48,36 @@ a {
   padding: 5.5rem 0;
 }
 
+.section-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.4rem 0 0.2rem;
+}
+
+.section-divider::before,
+.section-divider::after {
+  content: "";
+  flex: 0 0 80px;
+  border-top: 1px solid rgba(148, 163, 184, 0.5);
+}
+
+.section-divider-icon {
+  margin: 0 0.8rem;
+  font-size: 0.8rem;
+  color: var(--accent);
+}
+
 .section-alt {
-  background: radial-gradient(circle at top left, #fffaf3 0, #f2e7da 55%);
+  background:
+    repeating-linear-gradient(
+      135deg,
+      rgba(148, 163, 184, 0.08) 0,
+      rgba(148, 163, 184, 0.08) 1px,
+      transparent 1px,
+      transparent 10px
+    ),
+    radial-gradient(circle at top left, #fffaf3 0, #f2e7da 55%);
 }
 
 .section-heading {
