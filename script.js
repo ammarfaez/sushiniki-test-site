@@ -37,6 +37,7 @@ const revealElements = document.querySelectorAll(
 );
 const sections = document.querySelectorAll("main section[id]");
 const navLinks = document.querySelectorAll(".nav-list a[href^='#']");
+const backToTopBtn = document.querySelector(".back-to-top");
 
 if ("IntersectionObserver" in window) {
   // Content reveal
@@ -84,6 +85,18 @@ if ("IntersectionObserver" in window) {
 
     sections.forEach((section) => sectionObserver.observe(section));
   }
+}
+
+// Back-to-top button behavior
+if (backToTopBtn) {
+  window.addEventListener("scroll", () => {
+    const shouldShow = window.scrollY > 320;
+    backToTopBtn.classList.toggle("back-to-top-visible", shouldShow);
+  });
+
+  backToTopBtn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
 }
 
 // Simple fake submission handler for the reservation form
