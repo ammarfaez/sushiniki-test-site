@@ -347,6 +347,7 @@ a {
   border-radius: 1.8rem;
   overflow: hidden;
   background: #e6dde0;
+  box-shadow: 0 22px 44px rgba(15, 23, 42, 0.35);
 }
 
 .hero-photo img {
@@ -622,6 +623,16 @@ a {
   overflow: hidden;
   margin: -0.1rem -0.1rem 0.9rem;
   background: #e5e7eb;
+  box-shadow: 0 16px 32px rgba(15, 23, 42, 0.16);
+}
+
+.menu-thumb {
+  width: 64px;
+  height: 64px;
+  border-radius: 0.9rem;
+  object-fit: cover;
+  margin-bottom: 0.75rem;
+  box-shadow: 0 10px 22px rgba(15, 23, 42, 0.18);
 }
 
 .gallery-photo img {
