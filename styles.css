@@ -161,7 +161,7 @@ a {
 
 .logo {
   display: inline-flex;
-  align-items: baseline;
+  align-items: center;
   gap: 0.5rem;
 }
 
@@ -173,6 +173,12 @@ a {
   border: 1px solid rgba(245, 194, 107, 0.4);
   background: radial-gradient(circle at top left, #f5c26b 0, #1b1307 55%);
   color: #1b1307;
+}
+
+.logo-image {
+  height: 26px;
+  width: auto;
+  display: block;
 }
 
 .logo-text {
